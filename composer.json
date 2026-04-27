@@ -18,13 +18,13 @@
             "email": "dev@ksfii.org"
         }
     ],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
         "php": ">=8.0",
-        "ksfraser/ksf-calendar": "^1.0",
-        "ksfraser/html": "^1.0",
-        "ksfraser/superglobals": "^1.0"
+        "ksfraser/ksf-calendar": "*",
+        "ksfraser/genericinterface": "*",
+        "ksfraser/superglobals": "*"
     },
     "require-dev": {
         "phpunit/phpunit": "^10.0"
@@ -39,5 +39,16 @@
     },
     "config": {
         "sort-packages": true
-    }
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://packagist.org",
+            "canonical": true
+        },
+        {
+            "type": "path",
+            "url": "../ksf_Calendar"
+        }
+    ]
 }
