@@ -9,7 +9,7 @@
 
 declare(strict_types=1);
 
-namespace Ksfraser\CalendarUI\Widget;
+namespace Ksfraser\Widget;
 
 use Ksfraser\Calendar\Service\CalendarService;
 use Ksfraser\Calendar\DTO\CalendarEntryDTO;

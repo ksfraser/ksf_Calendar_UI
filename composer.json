@@ -31,7 +31,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Ksfraser\\CalendarUI\\": "src/"
+            "Ksfraser\\": "src/Ksfraser/"
         }
     },
     "scripts": {

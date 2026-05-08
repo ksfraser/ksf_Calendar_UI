@@ -7,7 +7,7 @@
 
 declare(strict_types=1);
 
-namespace Ksfraser\CalendarUI\Tests\Widget;
+namespace Ksfraser\Widget;
 
 use DateTime;
 use Ksfraser\Calendar\Entity\CalendarEntry;
