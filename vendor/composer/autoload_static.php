@@ -50,7 +50,7 @@ class ComposerStaticInit9fd7423a609ba87550f92abb93f8752d
             'Ksfraser\\File\\' => 14,
             'Ksfraser\\Exceptions\\' => 20,
             'Ksfraser\\Calendar\\' => 18,
-            'Ksfraser\\CalendarUI\\' => 20,
+            'Ksfraser\\' => 9,
         ),
         'G' => 
         array (
@@ -94,8 +94,8 @@ class ComposerStaticInit9fd7423a609ba87550f92abb93f8752d
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
-            1 => __DIR__ . '/..' . '/psr/http-factory/src',
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -153,9 +153,9 @@ class ComposerStaticInit9fd7423a609ba87550f92abb93f8752d
         array (
             0 => __DIR__ . '/..' . '/ksfraser/ksf-calendar/src/Ksfraser/Calendar',
         ),
-        'Ksfraser\\CalendarUI\\' => 
+        'Ksfraser\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/src',
+            0 => __DIR__ . '/../..' . '/src/Ksfraser',
         ),
         'GuzzleHttp\\Psr7\\' => 
         array (
