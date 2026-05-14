@@ -160,8 +160,13 @@ class CalendarWidget
             'source' => $s->getSource(),
         ], $sources));
 
-        ob_start();
-        include __DIR__ . '/../../templates/calendar-widget.php';
-        return ob_get_clean();
+        $templatePath = dirname(__DIR__, 2) . '/../../templates/calendar-widget.php';
+        if (file_exists($templatePath)) {
+            ob_start();
+            include $templatePath;
+            return ob_get_clean();
+        }
+        
+        return '<div class="calendar-widget" style="height:' . $height . 'px;">Calendar not available</div>';
     }
 }
