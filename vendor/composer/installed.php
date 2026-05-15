@@ -3,7 +3,7 @@
         'name' => 'ksfraser/ksf-calendar-ui',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '1311a359b41c131666a4123b194096577b4b123a',
+        'reference' => 'a0cd0d9eff3c7982675224a0201193e3db659144',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -114,7 +114,7 @@
         'ksfraser/ksf-calendar-ui' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '1311a359b41c131666a4123b194096577b4b123a',
+            'reference' => 'a0cd0d9eff3c7982675224a0201193e3db659144',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

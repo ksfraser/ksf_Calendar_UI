@@ -63,8 +63,8 @@ ksf_Calendar_UI (Platform Adapter)
 
 #### Calendar Sources
 - **Project Management**: Tasks and milestones
-- **CRM Activities**: Calls, meetings, follow-ups
-- **HRM Time Tracking**: Time entries
+- **CRM Activities**: Calls, meetings, follow-ups, anniversaries
+- **HRM Time Tracking**: Time entries, shift schedules
 - **Client Dates**: Birthdays, anniversaries, renewals
 - **Personal Events**: User-created events
 - **External iCal**: Subscribed calendars
@@ -75,11 +75,20 @@ ksf_Calendar_UI (Platform Adapter)
 - **Event Click**: View/edit event details
 - **Event Creation**: Click date to create new event
 - **Filter Toggles**: Show/hide calendar sources
+- **Task Sidebar**: Display unscheduled tasks ordered by priority/due date
+- **Color Coding**: Visual indicators for event status (planned vs completed)
 
 #### iCal Support
 - **Import**: Load events from .ics files
 - **Export**: Generate .ics feed URL
 - **Subscribe**: Subscribe to external calendars
+
+#### Advanced Features
+- **Meeting Status Tracking**: Planned/Held/Not Held/Rescheduled
+- **Call Outcome Tracking**: Planned/Held/RNA/VMail/RNA-followup/VMail-followup
+- **Shift Schedule View**: Special view for employee shift patterns
+- **Project Task Gantt**: Optional Gantt chart view for project tasks
+- **Source Grouping**: Group sources by customer, project, or type
 
 ### 2.2 Out-of-Scope Features
 
@@ -221,3 +230,4 @@ Each source has:
 | Version | Date | Author | Changes |
 |---------|------|--------|---------|
 | 1.0.0 | May 2026 | KSF Development Team | Initial specification |
+| 1.1.0 | May 2026 | KSF Development Team | Added: Meeting/Call status tracking, Shift schedule view, Unscheduled task sidebar, Source grouping by customer/project |

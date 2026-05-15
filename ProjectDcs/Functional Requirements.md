@@ -369,6 +369,188 @@ Response: text/calendar (RFC 5545)
 
 ---
 
+### 1.7 Meeting and Call Status Tracking
+
+#### FR-STS-001: Meeting Status Constants
+
+**Description:** Define meeting status constants for workflow integration.
+
+**Meeting Statuses:**
+| Status | Description | Workflow Action |
+|--------|-------------|------------------|
+| meeting_planned | Scheduled but not held | Reschedule if past |
+| meeting_held | Successfully completed | Archive |
+| meeting_not_held | Could not hold meeting | Follow up |
+| meeting_rescheduled | Moved to new time | Update schedule |
+
+**Call Outcomes:**
+| Status | Description | Workflow Action |
+|--------|-------------|------------------|
+| call_planned | Scheduled call | Reminder |
+| call_held | Call completed | Log notes |
+| call_rna | Ring No Answer | Auto-retry/followup |
+| call_vmail | Voicemail left | Follow up |
+| call_rna_followup | RNA with planned followup | Schedule |
+| call_vmail_followup | VM with planned followup | Schedule |
+
+---
+
+#### FR-STS-002: Status-Based Event Display
+
+**Description:** Visual differentiation of event status using color intensity.
+
+**Visual Rules:**
+| Status Type | Color Style | Opacity |
+|-------------|-------------|---------|
+| Planned/Future | Bright, solid | 100% |
+| In Progress | Normal | 100% |
+| Completed/Held | Dimmed, faded | 50% |
+| Cancelled/No-Show | Greyed out | 30% |
+
+**CSS Classes:**
+```css
+.event-status-planned { opacity: 1.0; }
+.event-status-held { opacity: 0.5; }
+.event-status-rna { opacity: 0.7; background-color: #FF9800; }
+.event-status-cancelled { opacity: 0.3; background-color: #9E9E9E; }
+```
+
+---
+
+### 1.8 Shift Schedule View
+
+#### FR-SHF-001: Display Shift Calendar
+
+**Description:** Special calendar view for employee shift schedules.
+
+**Pre-conditions:**
+- HRM Roster module installed
+- User has shift assignments
+
+**Post-conditions:**
+- Shifts displayed in calendar with shift-specific colors
+
+**Shift Types:**
+| Shift | Color | Time Range |
+|-------|-------|------------|
+| Morning | Orange (#FF9800) | 06:00-14:00 |
+| Afternoon | Blue (#2196F3) | 14:00-22:00 |
+| Night | Purple (#9C27B0) | 22:00-06:00 |
+| Swing | Red (#F44336) | Variable |
+
+---
+
+#### FR-SHF-002: Shift Entry Conversion
+
+**Description:** Convert Roster shifts to CalendarEntry for display.
+
+**Implementation:**
+```php
+CalendarEntry::fromRosterShift(Roster $roster): CalendarEntry
+```
+
+**Fields Mapping:**
+| Roster Field | Calendar Entry |
+|--------------|----------------|
+| id | sourceId |
+| shift | title (e.g., "Morning Shift") |
+| date + start_time | startDate |
+| date + end_time | endDate |
+| employee_id | assignedTo |
+| status | status |
+| notes | description |
+
+---
+
+### 1.9 Unscheduled Task Sidebar
+
+#### FR-SDB-001: Task Sidebar Display
+
+**Description:** Sidebar panel showing tasks without scheduled times.
+
+**Pre-conditions:**
+- ProjectManagement module installed
+- User has assigned tasks
+
+**Post-conditions:**
+- Sidebar shows unscheduled tasks sorted by priority/due date
+
+**Output Format:**
+```json
+[
+    {
+        "id": "task_1",
+        "title": "Review proposal",
+        "priority": "high",
+        "due_date": "2026-05-20",
+        "project": "Project Alpha"
+    },
+    {
+        "id": "task_2",
+        "title": "Send invoice",
+        "priority": "medium",
+        "due_date": "2026-05-25",
+        "project": "Project Beta"
+    }
+]
+```
+
+**Sorting:**
+1. Priority (high → medium → low)
+2. Due date (sooner → later)
+
+---
+
+#### FR-SDB-002: Drag Task to Calendar
+
+**Description:** Allow dragging unscheduled tasks to calendar to schedule.
+
+**Pre-conditions:**
+- Task visible in sidebar
+- Calendar has available time slot
+
+**Post-conditions:**
+- Task start_date updated to dropped time
+- Task appears in calendar
+
+**Implementation:**
+- FullCalendar eventDrop callback
+- AJAX PUT to update task
+- Remove from sidebar if now scheduled
+
+---
+
+### 1.10 Source Grouping by Customer/Project
+
+#### FR-GRP-001: Group Sources
+
+**Description:** Organize calendar sources by customer, project, or type.
+
+**Group Types:**
+| Group | Description | Example |
+|-------|-------------|---------|
+| customer | Group by customer | Acme Corp, Beta Inc |
+| project | Group by project | Project Alpha, Project Beta |
+| type | Group by event type | Meetings, Calls, Tasks |
+
+**Configuration:**
+```php
+$options['sourceGrouping'] = 'customer'; // or 'project', 'type'
+```
+
+---
+
+#### FR-GRP-002: Color-Coded Sources
+
+**Description:** User-controllable colors for each source/group.
+
+**Features:**
+- Color picker in source settings
+- Color saved per user preference
+- Default colors per source type
+
+---
+
 ## 2. Non-Functional Requirements
 
 ### 2.1 Performance
@@ -379,6 +561,7 @@ Response: text/calendar (RFC 5545)
 | Event fetch | < 200ms | Single range query |
 | Event create | < 300ms | Database write + response |
 | Drag-drop | < 100ms | Perceived responsiveness |
+| Task list fetch | < 150ms | Fetch unscheduled tasks |
 
 ### 2.2 Browser Support
 
@@ -396,3 +579,4 @@ Response: text/calendar (RFC 5545)
 | Version | Date | Author | Changes |
 |---------|------|--------|---------|
 | 1.0.0 | May 2026 | KSF Development Team | Initial specification |
+| 1.1.0 | May 2026 | KSF Development Team | Added: Meeting/Call status tracking (FR-STS-*), Shift schedule view (FR-SHF-*), Unscheduled task sidebar (FR-SDB-*), Source grouping (FR-GRP-*), Status-based color coding (FR-CLR-*) |
