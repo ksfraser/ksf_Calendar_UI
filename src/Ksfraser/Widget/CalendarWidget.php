@@ -55,7 +55,9 @@ class CalendarWidget
         $entries = $this->calendarService->getEntriesForDateRange($startDate, $endDate, $filters);
 
         return array_map(
-            fn($entry) => CalendarEntryDTO::fromEntity($entry)->toFullCalendarArray(),
+            function ($entry) {
+                return CalendarEntryDTO::fromEntity($entry)->toFullCalendarArray();
+            },
             $entries
         );
     }
@@ -142,7 +144,9 @@ class CalendarWidget
             return $allSources;
         }
 
-        return array_filter($allSources, fn($source) => in_array($source->getId(), $requestedSources));
+        return array_filter($allSources, function ($source) use ($requestedSources) {
+            return in_array($source->getId(), $requestedSources);
+        });
     }
 
     private function buildCalendarHtml(
@@ -153,12 +157,14 @@ class CalendarWidget
         bool $showFilters,
         bool $editable
     ): string {
-        $sourcesJson = json_encode(array_map(fn($s) => [
-            'id' => $s->getId(),
-            'name' => $s->getName(),
-            'color' => $s->getColor(),
-            'source' => $s->getSource(),
-        ], $sources));
+        $sourcesJson = json_encode(array_map(function ($s) {
+            return [
+                'id' => $s->getId(),
+                'name' => $s->getName(),
+                'color' => $s->getColor(),
+                'source' => $s->getSource(),
+            ];
+        }, $sources));
 
         $templatePath = dirname(__DIR__, 2) . '/../../templates/calendar-widget.php';
         if (file_exists($templatePath)) {
