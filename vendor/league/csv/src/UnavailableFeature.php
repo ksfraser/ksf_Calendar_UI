@@ -13,7 +13,6 @@ declare(strict_types=1);
 
 namespace League\Csv;
 
-use Deprecated;
 use Throwable;
 
 /**
@@ -26,7 +25,7 @@ class UnavailableFeature extends Exception
      *
      * @deprecated since version 9.7.0
      */
-    public function __construct(string $message = '', int $code = 0, ?Throwable $previous = null)
+    public function __construct(string $message = '', int $code = 0, Throwable $previous = null)
     {
         parent::__construct($message, $code, $previous);
     }
@@ -38,6 +37,6 @@ class UnavailableFeature extends Exception
 
     public static function dueToMissingStreamSeekability(): self
     {
-        return new self('stream does not support seeking.');
+        return new self('stream does not support seeking');
     }
 }

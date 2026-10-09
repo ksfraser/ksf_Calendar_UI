@@ -6,6 +6,8 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'ksfraser\\Tests\\' => array($baseDir . '/tests'),
+    'ksfraser\\' => array($baseDir . '/src/ksfraser', $vendorDir . '/ksfraser/ksf-calendar/src/ksfraser'),
     'Symfony\\Polyfill\\Php80\\' => array($vendorDir . '/symfony/polyfill-php80'),
     'Symfony\\Polyfill\\Mbstring\\' => array($vendorDir . '/symfony/polyfill-mbstring'),
     'Symfony\\Polyfill\\Ctype\\' => array($vendorDir . '/symfony/polyfill-ctype'),
@@ -15,7 +17,6 @@ return array(
     'Psr\\Http\\Client\\' => array($vendorDir . '/psr/http-client/src'),
     'Psr\\EventDispatcher\\' => array($vendorDir . '/psr/event-dispatcher/src'),
     'Psr\\Container\\' => array($vendorDir . '/psr/container/src'),
-    'Psr\\Cache\\' => array($vendorDir . '/psr/cache/src'),
     'PhpParser\\' => array($vendorDir . '/nikic/php-parser/lib/PhpParser'),
     'League\\Csv\\' => array($vendorDir . '/league/csv/src'),
     'Ksfraser\\Validation\\' => array($vendorDir . '/ksfraser/validation/src'),
@@ -25,14 +26,10 @@ return array(
     'Ksfraser\\GenericInterface\\' => array($vendorDir . '/ksfraser/genericinterface/src/Ksfraser/GenericInterface'),
     'Ksfraser\\File\\' => array($vendorDir . '/ksfraser/file/src/Ksfraser/File'),
     'Ksfraser\\Exceptions\\' => array($vendorDir . '/ksfraser/exceptions/src/Ksfraser/Exceptions'),
-    'Ksfraser\\Calendar\\' => array($vendorDir . '/ksfraser/ksf-calendar/src/Ksfraser/Calendar'),
-    'Ksfraser\\' => array($baseDir . '/src/Ksfraser'),
     'GuzzleHttp\\Psr7\\' => array($vendorDir . '/guzzlehttp/psr7/src'),
     'GuzzleHttp\\Promise\\' => array($vendorDir . '/guzzlehttp/promises/src'),
     'GuzzleHttp\\' => array($vendorDir . '/guzzlehttp/guzzle/src'),
     'Eluceo\\iCal\\' => array($vendorDir . '/eluceo/ical/src'),
-    'Doctrine\\Deprecations\\' => array($vendorDir . '/doctrine/deprecations/src'),
-    'Doctrine\\DBAL\\' => array($vendorDir . '/doctrine/dbal/src'),
-    'Doctrine\\Common\\' => array($vendorDir . '/doctrine/event-manager/src'),
+    'Doctrine\\Instantiator\\' => array($vendorDir . '/doctrine/instantiator/src/Doctrine/Instantiator'),
     'DeepCopy\\' => array($vendorDir . '/myclabs/deep-copy/src/DeepCopy'),
 );

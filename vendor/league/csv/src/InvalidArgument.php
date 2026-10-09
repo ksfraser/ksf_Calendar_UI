@@ -13,7 +13,6 @@ declare(strict_types=1);
 
 namespace League\Csv;
 
-use Deprecated;
 use Throwable;
 
 /**
@@ -26,7 +25,7 @@ class InvalidArgument extends Exception
      *
      * @deprecated since version 9.7.0
      */
-    public function __construct(string $message = '', int $code = 0, ?Throwable $previous = null)
+    public function __construct(string $message = '', int $code = 0, Throwable $previous = null)
     {
         parent::__construct($message, $code, $previous);
     }
@@ -53,12 +52,7 @@ class InvalidArgument extends Exception
 
     public static function dueToInvalidEscapeCharacter(string $escape, string $method): self
     {
-        return new self($method.'() expects escape to be a single character or an empty string; `'.$escape.'` given.');
-    }
-
-    public static function dueToInvalidBOMCharacter(string $method, Throwable $exception): self
-    {
-        return new self($method.'() expects a valid Byte Order Mark.', 0, $exception);
+        return new self($method.'() expects escape to be a single character  or the empty string; `'.$escape.'` given.');
     }
 
     public static function dueToInvalidColumnCount(int $columns_count, string $method): self
@@ -76,7 +70,10 @@ class InvalidArgument extends Exception
         return new self($method.'() expects the submitted offset to be a positive integer or 0, '.$offset.' given');
     }
 
-    public static function dueToInvalidColumnIndex(string|int $index, string $type, string $method): self
+    /**
+     * @param string|int $index
+     */
+    public static function dueToInvalidColumnIndex($index, string $type, string $method): self
     {
         return new self($method.'() expects the '.$type.' index to be a valid string or integer, `'.$index.'` given');
     }
@@ -84,16 +81,6 @@ class InvalidArgument extends Exception
     public static function dueToInvalidLimit(int $limit, string $method): self
     {
         return new self($method.'() expects the limit to be greater or equal to -1, '.$limit.' given.');
-    }
-
-    public static function dueToInvalidOrder(string $order, string $method): self
-    {
-        return new self($method.'() expects `ASC` or `DESC` in a case-insensitive way, '.$order.' given.');
-    }
-
-    public static function dueToInvalidOperator(string $operator, string $method): self
-    {
-        return new self($method.'() expects valid comparison operator in a case-insensitive way, '.$operator.' given.');
     }
 
     public static function dueToInvalidSeekingPosition(int $position, string $method): self

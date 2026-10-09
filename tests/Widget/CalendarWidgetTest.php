@@ -2,15 +2,15 @@
 /**
  * CalendarWidget Test
  *
- * @package Ksfraser\Widget\Tests\Widget
+ * @package ksfraser\Widget\Tests\Widget
  */
 
 declare(strict_types=1);
 
-namespace Ksfraser\Widget\Tests\Widget;
+namespace ksfraser\Widget\Tests\Widget;
 
-use Ksfraser\Calendar\Service\CalendarService;
-use Ksfraser\Widget\CalendarWidget;
+use ksfraser\Calendar\Service\CalendarService;
+use ksfraser\Widget\CalendarWidget;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
 use Psr\Log\LoggerInterface;

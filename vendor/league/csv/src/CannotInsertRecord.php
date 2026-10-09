@@ -19,12 +19,12 @@ namespace League\Csv;
 class CannotInsertRecord extends Exception
 {
     /** The record submitted for insertion. */
-    protected array $record = [];
-    /** Validator which did not validate the data. */
+    protected array $record;
+    /** Validator which did not validated the data. */
     protected string $name = '';
 
     /**
-     * Creates an Exception from a record insertion into a stream.
+     * Create an Exception from a record insertion into a stream.
      */
     public static function triggerOnInsertion(array $record): self
     {
@@ -35,7 +35,7 @@ class CannotInsertRecord extends Exception
     }
 
     /**
-     * Creates an Exception from a Record Validation.
+     * Create an Exception from a Record Validation.
      */
     public static function triggerOnValidation(string $name, array $record): self
     {
@@ -47,7 +47,8 @@ class CannotInsertRecord extends Exception
     }
 
     /**
-     * Returns the validator name.
+     * return the validator name.
+     *
      */
     public function getName(): string
     {
@@ -55,7 +56,8 @@ class CannotInsertRecord extends Exception
     }
 
     /**
-     * Returns the invalid data submitted.
+     * return the invalid data submitted.
+     *
      */
     public function getRecord(): array
     {

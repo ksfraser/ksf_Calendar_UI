@@ -534,7 +534,7 @@
             "dist": {
                 "type": "path",
                 "url": "../ksf_Calendar",
-                "reference": "570c18abb7d41d62949f78b7e4b677bfb6c2c6d6"
+                "reference": "5f82f029eef69de24d48cade6c5e81d6cab17ed6"
             },
             "require": {
                 "eluceo/ical": "^2.0",
@@ -556,15 +556,12 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Ksfraser\\": "src/Ksfraser/"
-                },
-                "classmap": [
-                    "src/Ksfraser/Calendar/Event/CalendarEntryEvents.php"
-                ]
+                    "ksfraser\\": "src/ksfraser/"
+                }
             },
             "autoload-dev": {
                 "psr-4": {
-                    "Ksfraser\\Tests\\": "tests/"
+                    "ksfraser\\Tests\\": "tests/"
                 }
             },
             "scripts": {
