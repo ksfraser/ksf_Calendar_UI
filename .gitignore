@@ -5,3 +5,7 @@ vendor/
 # that points outside the repo makes the checkout meaningless on any other
 # machine. Run composer install instead.
 vendor/ksfraser/ksf-calendar
+
+# PHPUnit result caches are generated and machine-specific
+.phpunit.cache/
+.phpunit.result.cache
