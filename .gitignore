@@ -1,2 +1,7 @@
 # Composer dependencies
 vendor/
+
+# A path repository installs a SYMLINK into vendor/, and committing a symlink
+# that points outside the repo makes the checkout meaningless on any other
+# machine. Run composer install instead.
+vendor/ksfraser/ksf-calendar
